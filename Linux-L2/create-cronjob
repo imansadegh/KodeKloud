@@ -1,0 +1,9 @@
+yum install cronie
+systemctl start crond
+systemctl enable crond
+systemctl status crond
+#For individual users, the cron service checks the following file: /var/spool/cron/crontabs
+#* * * * * sh /path/to/script.sh * *  * * * represents minute(s) hour(s) day(s) month(s) weekday(s)
+crontab -e 
+*/5 * * * * echo hello > /tmp/cron_text
+vi /etc/cron.allow
