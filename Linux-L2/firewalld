@@ -27,4 +27,7 @@ How can i solve?
 # Reload firewalld to apply the changes:
 7- sudo firewall-cmd --reload
 
+# I want to ensure apache don't listen on 8080 i go to :
 sudo vi /etc/httpd/conf/httpd.conf  
+# comment this line:
+# Listen 8080
