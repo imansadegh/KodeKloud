@@ -15,4 +15,16 @@ e. If Apache or Nginx services aren't running already, please make sure to start
 
 How can i solve?
 1- ssh to all of app servers (you can use this page for users and passwords app-servers    https://kodekloudhub.github.io/kodekloud-engineer/docs/projects/nautilus#infrastructure-details)
-2- yum install firewalld
+# install firewalld:
+2- sudo yum install firewalld
+# Then start and enable the service:
+3- sudo systemctl start firewalld
+4- sudo systemctl enable firewalld
+# Now, what happens when you need to allow traffic over a non-standard port? Imagine you have a backup service that needs to run over a dedicated UDP port. How would you add this exception to your zone? The syntax is very user friendly and is only slightly different from what we used for services. To add a port to your zone configuration, use the following:
+5- sudo firewall-cmd --permanent --zone=public --add-port=80/tcp
+# And to remove the port rule, you guessed it... simply switch
+6- sudo firewall-cmd --permanent --zone=public --remove-port=8080/tcp
+# Reload firewalld to apply the changes:
+7- sudo firewall-cmd --reload
+
+sudo vi /etc/httpd/conf/httpd.conf  
